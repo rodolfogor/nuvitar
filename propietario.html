@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuvitar — Convierte tu casa en liquidez sin moverte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF6;
+      --dark: #1A1612;
+      --brown: #3D2B1F;
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --green: #2D4A3E;
+      --green-light: #4A7A68;
+      --text-muted: #7A6A5A;
+      --border: #E0D5C8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(247,243,238,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+    .nav-back:hover { color: var(--green); }
+
+    /* HERO */
+    .hero {
+      padding: 9rem 6rem 5rem;
+      background: var(--green);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 500; margin-bottom: 1.25rem; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); color: white; line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 2.5rem; }
+    .btn-gold {
+      background: var(--gold); color: var(--dark);
+      padding: 1rem 2.5rem; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
+      text-decoration: none; display: inline-block;
+      transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .hero-right { display: flex; flex-direction: column; gap: 1rem; }
+    .benefit-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .benefit-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
+    .benefit-title { font-weight: 500; color: white; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .benefit-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* PARA QUIEN */
+    .para-quien {
+      padding: 6rem;
+      background: var(--warm-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .section-eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--dark); line-height: 1.2; margin-bottom: 1.25rem; }
+    .section-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 2rem; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .check-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--brown); line-height: 1.5; }
+    .check { width: 20px; height: 20px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; flex-shrink: 0; margin-top: 1px; }
+
+    .historia-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+      position: relative;
+    }
+    .historia-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .historia-text { font-size: 0.95rem; color: var(--brown); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .historia-autor { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; }
+
+    /* STEPS */
+    .steps-section { padding: 6rem; background: var(--cream); }
+    .steps-header { text-align: center; margin-bottom: 4rem; }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 27px; left: 10%; right: 10%;
+      height: 1px;
+      background: var(--border);
+    }
+    .step { text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 1px var(--green);
+    }
+    .step-title { font-weight: 600; font-size: 0.85rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CALCULATOR */
+    .calc-section {
+      padding: 6rem;
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .calc-left h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: white; line-height: 1.2; margin-bottom: 1.25rem; }
+    .calc-left p { font-size: 0.92rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+    .calc-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+    .calc-field { margin-bottom: 1.5rem; }
+    .calc-field label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .calc-field input, .calc-field select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2px;
+      padding: 0.85rem 1rem;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .calc-field input:focus, .calc-field select:focus { border-color: var(--gold); }
+    .calc-field select option { background: #1A1612; }
+    .calc-result {
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 2px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      display: none;
+    }
+    .calc-result.visible { display: block; }
+    .result-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+    .result-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); }
+    .result-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+    .btn-calc {
+      width: 100%; background: var(--gold); color: var(--dark);
+      padding: 0.95rem; border: none; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-calc:hover { background: var(--gold-light); }
+
+    /* FAQ */
+    .faq-section { padding: 6rem; background: var(--warm-white); }
+    .faq-header { text-align: center; margin-bottom: 3.5rem; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .faq-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1.75rem;
+    }
+    .faq-q { font-weight: 600; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.6rem; }
+    .faq-a { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 6rem;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-left h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--dark); line-height: 1.2; margin-bottom: 1.25rem; }
+    .contact-left p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 2rem; }
+    .trust-items { display: flex; flex-direction: column; gap: 1rem; }
+    .trust-item { display: flex; align-items: center; gap: 0.85rem; font-size: 0.87rem; color: var(--brown); }
+    .trust-icon { width: 34px; height: 34px; background: var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.8rem; color: var(--brown); font-weight: 500; margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: white; border: 1.5px solid var(--border);
+      border-radius: 2px; padding: 0.8rem 1rem;
+      color: var(--dark); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .radio-group { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .radio-option { display: flex; align-items: center; gap: 0.4rem; font-size: 0.87rem; color: var(--brown); cursor: pointer; }
+    .radio-option input { width: auto; }
+    .btn-submit {
+      width: 100%; background: var(--green); color: white;
+      padding: 1rem; border: none; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--green-light); }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .wa-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      background: #25D366; color: white; width: 56px; height: 56px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem; gap: 2.5rem; }
+      .para-quien { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2.5rem; }
+      .steps-section { padding: 4rem 2rem; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid::before { display: none; }
+      .calc-section { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      .faq-section { padding: 4rem 2rem; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .contact-section { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Nuvi<span>tar</span></a>
+    <a href="index.html" class="nav-back">← Volver al inicio</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Para propietarios</p>
+      <h1 class="hero-title">
+        Tu casa tiene un valor que<br/><em>puedes usar hoy.</em>
+      </h1>
+      <p class="hero-sub">
+        Si eres dueño de una propiedad en CDMX, Puebla o Estado de México y necesitas liquidez sin abandonar tu hogar, la nuda propiedad puede ser la solución que no sabías que existía.
+      </p>
+      <a href="#contacto" class="btn-gold">Quiero más información</a>
+    </div>
+    <div class="hero-right">
+      <div class="benefit-item">
+        <span class="benefit-icon">💰</span>
+        <div>
+          <p class="benefit-title">Elige cómo recibir tu dinero</p>
+          <p class="benefit-desc">Pago único en una sola exhibición o renta vitalicia mensual, tú decides lo que más te conviene.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">🏠</span>
+        <div>
+          <p class="benefit-title">Sigues viviendo en tu casa</p>
+          <p class="benefit-desc">Tu derecho a habitar la propiedad queda protegido legalmente de por vida.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">⚖️</span>
+        <div>
+          <p class="benefit-title">100% legal y seguro</p>
+          <p class="benefit-desc">El proceso se formaliza ante notario público e inscrito en el Registro Público de la Propiedad.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-icon">🤝</span>
+        <div>
+          <p class="benefit-title">Te acompañamos en todo</p>
+          <p class="benefit-desc">Sin costos ocultos. Sin presión. Sin letra chica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIÉN -->
+  <section class="para-quien">
+    <div>
+      <p class="section-eyebrow">¿Para quién es?</p>
+      <h2 class="section-title">Diseñado para quienes tienen patrimonio pero necesitan liquidez</h2>
+      <p class="section-desc">Este modelo funciona especialmente bien si te identificas con alguna de estas situaciones:</p>
+      <ul class="check-list">
+        <li><span class="check">✓</span><span>Eres propietario de una casa o departamento de valor y tu pensión no es suficiente para vivir tranquilo.</span></li>
+        <li><span class="check">✓</span><span>No tienes herederos directos o tus hijos están de acuerdo en que aproveches tu patrimonio en vida.</span></li>
+        <li><span class="check">✓</span><span>Tienes más de 65 años y quieres dejar de preocuparte por dinero sin perder tu hogar.</span></li>
+        <li><span class="check">✓</span><span>Quieres monetizar tu propiedad pero no estás dispuesto a mudarte ni a rentar tu casa.</span></li>
+      </ul>
+    </div>
+    <div class="historia-card">
+      <div class="historia-quote">"</div>
+      <p class="historia-text">Llevaba años viviendo en mi departamento en Narvarte sin poder hacer más que pagar lo básico. No quería venderlo, es mi hogar. Con Nuvitar encontré una solución que nunca imaginé: obtuve el dinero que necesitaba y sigo aquí, en mi casa, como siempre.</p>
+      <p class="historia-autor">— Carmen, 78 años, propietaria en Narvarte, CDMX</p>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps-section">
+    <div class="steps-header">
+      <p class="section-eyebrow">El proceso</p>
+      <h2 class="section-title" style="font-family:'Playfair Display',serif; font-size:2rem; color:var(--dark);">Simple, transparente, sin sorpresas</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Nos contactas</div>
+        <div class="step-desc">Una llamada o mensaje sin compromiso. Te explicamos todo con calma.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Valuamos tu propiedad</div>
+        <div class="step-desc">Calculamos cuánto podrías recibir según el valor del inmueble y tu perfil.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Encontramos comprador</div>
+        <div class="step-desc">Conectamos tu propiedad con inversionistas de nuestra red de confianza.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Firma ante notario</div>
+        <div class="step-desc">Todo queda formalizado legalmente. Tu derecho a vivir en casa queda protegido.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Recibes tu dinero</div>
+        <div class="step-desc">Depósito directo a tu cuenta. Sigues en tu casa como siempre.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calc-section">
+    <div class="calc-left">
+      <h2>¿Cuánto podrías recibir por tu propiedad?</h2>
+      <p>Esta calculadora te da una estimación orientativa basada en el valor de tu inmueble y tu edad. Para un cálculo real y personalizado, contáctanos directamente.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-field">
+        <label>Valor aproximado de tu propiedad (MXN)</label>
+        <input type="number" id="prop-value" placeholder="Ej. 4,000,000" />
+      </div>
+      <div class="calc-field">
+        <label>Tu edad actual</label>
+        <input type="number" id="prop-age" placeholder="Ej. 72" min="65" max="99" />
+      </div>
+      <div class="calc-field">
+        <label>Zona de la propiedad</label>
+        <select id="prop-zone">
+          <option value="">Selecciona una zona</option>
+          <option value="premium">Polanco / Lomas / Pedregal</option>
+          <option value="alta">Condesa / Roma / Narvarte</option>
+          <option value="media">Del Valle / Coyoacán / Napoles</option>
+          <option value="puebla">Puebla (Centro / Angelópolis)</option>
+          <option value="edomex">Estado de México (Interlomas / Satélite / Metepec)</option>
+          <option value="otra">Otra zona de CDMX</option>
+        </select>
+      </div>
+      <div class="calc-result" id="calc-result">
+        <div class="result-label">Estimación orientativa</div>
+        <div class="result-value" id="result-value">—</div>
+        <div class="result-note">Sujeto a valuación formal. Solo referencial.</div>
+      </div>
+      <button class="btn-calc" onclick="calcular()">Calcular mi estimación</button>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="faq-header">
+      <p class="section-eyebrow">Preguntas frecuentes</p>
+      <h2 class="section-title" style="font-family:'Playfair Display',serif; font-size:2rem; color:var(--dark);">Lo que más nos preguntan</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <p class="faq-q">¿Me pueden sacar de mi casa?</p>
+        <p class="faq-a">No. Tu derecho de usufructo queda inscrito en el Registro Público de la Propiedad. Nadie puede obligarte a salir de tu hogar mientras vivas.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Qué pasa si el comprador fallece antes que yo?</p>
+        <p class="faq-a">La nuda propiedad pasa a sus herederos, pero tu usufructo vitalicio permanece intacto. Tu situación no cambia en absoluto.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Hay impuestos por esta operación?</p>
+        <p class="faq-a">Sí, existe un tratamiento fiscal específico. Te explicamos con detalle las implicaciones del ISR antes de cualquier decisión. Sin sorpresas.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Cuánto tiempo tarda el proceso?</p>
+        <p class="faq-a">Desde la primera consulta hasta recibir el dinero, el proceso toma entre 6 y 10 semanas dependiendo de la documentación y el notario.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Cuál es la edad mínima para participar?</p>
+        <p class="faq-a">Trabajamos con propietarios mayores de 65 años. A mayor edad, mayor es el monto que puedes recibir por tu propiedad.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">¿Tienen cobertura fuera de CDMX?</p>
+        <p class="faq-a">Sí, operamos en Ciudad de México, Puebla y Estado de México. Si tienes una propiedad en otra zona, contáctanos y lo evaluamos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contacto">
+    <div class="contact-left">
+      <p class="section-eyebrow">Contacto</p>
+      <h2>Platicamos sin compromiso</h2>
+      <p>La primera consulta es gratuita y confidencial. Sin presión, sin letra chica. Solo una plática para entender tu situación y explicarte si esta opción es para ti.</p>
+      <div class="trust-items">
+        <div class="trust-item"><span class="trust-icon">🔒</span><span>Tu información es completamente confidencial</span></div>
+        <div class="trust-item"><span class="trust-icon">⚖️</span><span>Operaciones formalizadas ante notario público</span></div>
+        <div class="trust-item"><span class="trust-icon">💬</span><span>Respuesta en menos de 24 horas</span></div>
+        <div class="trust-item"><span class="trust-icon">🤝</span><span>Sin compromisos en la primera plática</span></div>
+      </div>
+    </div>
+    <div>
+      <form onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label>¿Quién hace esta consulta?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="tipo" value="propietario" checked /> Soy el propietario</label>
+            <label class="radio-option"><input type="radio" name="tipo" value="familiar" /> Consulto para un familiar</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="55 1234 5678" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Colonia aproximada de la propiedad</label>
+          <input type="text" placeholder="Ej. Narvarte, Angelópolis, Satélite..." />
+        </div>
+        <div class="form-group">
+          <label>¿Algo que quieras comentarnos? (opcional)</label>
+          <textarea placeholder="Cuéntanos un poco sobre tu situación..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Quiero que me contacten →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Nuvi<span>tar</span></a>
+    <p>© 2025 Nuvitar. La información en este sitio es orientativa y no constituye asesoría legal o fiscal.</p>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="invertir.html">Soy inversionista</a>
+      <a href="mailto:hola@nuvitar.com">hola@nuvitar.com</a>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
+
+  <script>
+    function calcular() {
+      const valor = parseFloat(document.getElementById('prop-value').value);
+      const edad = parseInt(document.getElementById('prop-age').value);
+      const zona = document.getElementById('prop-zone').value;
+      const result = document.getElementById('calc-result');
+      const resultVal = document.getElementById('result-value');
+      if (!valor || !edad || !zona) { alert('Por favor completa todos los campos.'); return; }
+      if (edad < 65) { resultVal.textContent = 'Edad mínima: 65 años'; result.classList.add('visible'); return; }
+      let ageFactor = 0.35;
+      if (edad >= 70 && edad < 75) ageFactor = 0.40;
+      if (edad >= 75 && edad < 80) ageFactor = 0.46;
+      if (edad >= 80 && edad < 85) ageFactor = 0.52;
+      if (edad >= 85) ageFactor = 0.58;
+      let zoneFactor = 1.0;
+      if (zona === 'premium') zoneFactor = 1.05;
+      if (zona === 'alta') zoneFactor = 1.0;
+      if (zona === 'media') zoneFactor = 0.95;
+      if (zona === 'puebla') zoneFactor = 0.90;
+      if (zona === 'edomex') zoneFactor = 0.88;
+      if (zona === 'otra') zoneFactor = 0.9;
+      const min = Math.round(valor * ageFactor * zoneFactor * 0.92 / 1000) * 1000;
+      const max = Math.round(valor * ageFactor * zoneFactor * 1.08 / 1000) * 1000;
+      const fmt = n => '$' + n.toLocaleString('es-MX') + ' MXN';
+      resultVal.textContent = `${fmt(min)} – ${fmt(max)}`;
+      result.classList.add('visible');
+    }
+    function submitForm(e) {
+      e.preventDefault();
+      alert('¡Gracias! Te contactaremos en menos de 24 horas.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

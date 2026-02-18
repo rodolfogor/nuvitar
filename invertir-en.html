@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuvitar — Real Estate Investment in Mexico City</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark: #1A1612; --gold: #C9A96E; --gold-light: #E8D5B0;
+      --green: #2D4A3E; --green-light: #4A7A68;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: white; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(26,22,18,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-lang { font-size: 0.82rem; color: var(--gold); text-decoration: none; border: 1px solid rgba(201,169,110,0.4); padding: 0.35rem 0.85rem; border-radius: 2px; letter-spacing: 0.5px; transition: all 0.2s; }
+    .nav-lang:hover { background: rgba(201,169,110,0.1); }
+    .nav-back { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: none; }
+    .nav-back:hover { color: var(--gold); }
+    .hero { padding: 10rem 6rem 6rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; background: radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 70%); pointer-events: none; }
+    .eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 5rem); color: white; line-height: 1.1; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 580px; margin: 0 auto 3rem; }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: 1rem 2.5rem; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .metrics { padding: 5rem 6rem; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+    .metric { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 3px; padding: 2rem; transition: border-color 0.2s; }
+    .metric:hover { border-color: rgba(201,169,110,0.3); }
+    .metric-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+    .metric-val { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); margin-bottom: 0.25rem; }
+    .metric-lbl { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+    .why { padding: 6rem; }
+    .why-head { margin-bottom: 4rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: white; line-height: 1.2; max-width: 600px; margin-top: 0.75rem; }
+    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .why-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 3px; padding: 2rem; }
+    .why-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: rgba(201,169,110,0.2); margin-bottom: 1rem; line-height: 1; }
+    .why-title { font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 0.6rem; }
+    .why-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
+    .props { padding: 6rem; background: rgba(255,255,255,0.015); }
+    .props-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .props-head h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: white; }
+    .props-head p { font-size: 0.82rem; color: rgba(255,255,255,0.35); max-width: 260px; text-align: right; line-height: 1.6; }
+    .props-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .prop-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; transition: border-color 0.2s; }
+    .prop-card:hover { border-color: rgba(201,169,110,0.4); }
+    .prop-img { height: 190px; overflow: hidden; position: relative; }
+    .prop-img img { width: 100%; height: 100%; object-fit: cover; }
+    .prop-badge { position: absolute; top: 1rem; left: 1rem; background: var(--gold); color: var(--dark); font-size: 0.7rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; }
+    .prop-body { padding: 1.5rem; }
+    .prop-zone { font-size: 0.72rem; color: rgba(255,255,255,0.35); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .prop-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 1.25rem; }
+    .prop-rows { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .prop-row { display: flex; justify-content: space-between; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .prop-row:last-child { border-bottom: none; }
+    .prop-key { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+    .prop-val { font-size: 0.82rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+    .prop-val.hi { color: var(--gold); font-weight: 600; }
+    .prop-cta { display: block; text-align: center; background: var(--gold); color: var(--dark); padding: 0.75rem; border-radius: 2px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: background 0.2s; }
+    .prop-cta:hover { background: var(--gold-light); }
+    .props-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .process { padding: 6rem; }
+    .process-head { text-align: center; margin-bottom: 4rem; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 27px; left: 8%; right: 8%; height: 1px; background: rgba(255,255,255,0.08); }
+    .step { text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 54px; height: 54px; border-radius: 50%; background: rgba(201,169,110,0.15); border: 1px solid rgba(201,169,110,0.3); color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+    .step-title { font-weight: 600; font-size: 0.88rem; color: white; margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .contact-section { padding: 6rem; background: rgba(255,255,255,0.02); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-left h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: white; line-height: 1.2; margin-bottom: 1.25rem; }
+    .contact-left p { font-size: 0.92rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 2rem; }
+    .trust-items { display: flex; flex-direction: column; gap: 1rem; }
+    .trust-item { display: flex; align-items: center; gap: 0.85rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .trust-icon { width: 34px; height: 34px; background: rgba(201,169,110,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .form-group input, .form-group select { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; padding: 0.85rem 1rem; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--gold); }
+    .form-group select option { background: #1A1612; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit { width: 100%; background: var(--gold); color: var(--dark); padding: 1rem; border: none; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--gold-light); }
+    footer { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.1); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 8rem 2rem 5rem; }
+      .metrics { padding: 4rem 2rem; grid-template-columns: 1fr 1fr; }
+      .why { padding: 4rem 2rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .props { padding: 4rem 2rem; }
+      .props-head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .props-head p { text-align: left; }
+      .props-grid { grid-template-columns: 1fr; }
+      .process { padding: 4rem 2rem; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .contact-section { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Nuvi<span>tar</span></a>
+    <div class="nav-right">
+      <a href="invertir.html" class="nav-lang">ES 🌐</a>
+      <a href="index.html" class="nav-back">← Back to home</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <p class="eyebrow">For investors</p>
+    <h1>Prime assets.<br/><em>Yesterday's prices.</em></h1>
+    <p>Acquire properties in high-demand areas of Mexico City, Puebla and Estado de México at 40–60% below market value. No mortgage. No public listings.</p>
+    <a href="#contact" class="btn-gold">Access the property portfolio →</a>
+  </section>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-icon">📉</div><div class="metric-val">40–60%</div><div class="metric-lbl">Average discount below market value in prime zones</div></div>
+    <div class="metric"><div class="metric-icon">🏙️</div><div class="metric-val">3 zones</div><div class="metric-lbl">Mexico City, Puebla and Estado de México — high real estate demand</div></div>
+    <div class="metric"><div class="metric-icon">📋</div><div class="metric-val">100%</div><div class="metric-lbl">All operations notarized with full legal security</div></div>
+    <div class="metric"><div class="metric-icon">🔒</div><div class="metric-val">Exclusive</div><div class="metric-lbl">Portfolio not available on any public real estate portal</div></div>
+  </div>
+
+  <section class="why">
+    <div class="why-head">
+      <p class="eyebrow">Why invest in bare ownership</p>
+      <h2 class="section-title">An investment product that doesn't exist in the traditional market</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-num">01</div><div class="why-title">Entry price well below market</div><div class="why-desc">You acquire ownership of a property in a high-demand area at a fraction of its real value, with appreciation potential until full ownership consolidates.</div></div>
+      <div class="why-card"><div class="why-num">02</div><div class="why-title">No mortgage or bank financing needed</div><div class="why-desc">This is a direct cash investment. You don't depend on interest rates, credit approvals or changing financial market conditions.</div></div>
+      <div class="why-card"><div class="why-num">03</div><div class="why-title">You can resell before full consolidation</div><div class="why-desc">You're not tied in indefinitely. Bare ownership is transferable to third parties at any time, respecting the original owner's usufruct rights.</div></div>
+      <div class="why-card"><div class="why-num">04</div><div class="why-title">Full legal security</div><div class="why-desc">Every transaction is notarized and registered in the Public Property Registry. You receive deeds that certify your bare ownership title.</div></div>
+      <div class="why-card"><div class="why-num">05</div><div class="why-title">Due diligence included</div><div class="why-desc">Before presenting any property, we verify registry history, legal status and formal valuation. You decide with complete information.</div></div>
+      <div class="why-card"><div class="why-num">06</div><div class="why-title">Virtually no competition in Mexico</div><div class="why-desc">Unlike Spain or France where bare ownership is a mature market, in Mexico it's an emerging niche. Entering today means entering before the competition arrives.</div></div>
+    </div>
+  </section>
+
+  <section class="props">
+    <div class="props-head">
+      <h2>Properties available</h2>
+      <p>Representative examples. Contact us to see the full current portfolio.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="Narvarte" /><span class="prop-badge">52% off</span></div>
+        <div class="prop-body">
+          <p class="prop-zone">📍 Narvarte, Mexico City</p>
+          <h3 class="prop-name">3-bedroom apartment</h3>
+          <div class="prop-rows">
+            <div class="prop-row"><span class="prop-key">Market value</span><span class="prop-val">$4,800,000 MXN</span></div>
+            <div class="prop-row"><span class="prop-key">Bare ownership price</span><span class="prop-val hi">$2,300,000 MXN</span></div>
+            <div class="prop-row"><span class="prop-key">Usufructuary age</span><span class="prop-val">78 years</span></div>
+            <div class="prop-row"><span class="prop-key">Savings vs. market</span><span class="prop-val hi">$2,500,000 MXN</span></div>
+          </div>
+          <a href="#contact" class="prop-cta">I'm interested in this property</a>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Polanco" /><span class="prop-badge">45% off</span></div>
+        <div class="prop-body">
+          <p class="prop-zone">📍 Polanco, Mexico City</p>
+          <h3 class="prop-name">2-bedroom apartment</h3>
+          <div class="prop-rows">
+            <div class="prop-row"><span class="prop-key">Market value</span><span class="prop-val">$8,500,000 MXN</span></div>
+            <div class="prop-row"><span class="prop-key">Bare ownership price</span><span class="prop-val hi">$4,675,000 MXN</span></div>
+            <div class="prop-row"><span class="prop-key">Usufructuary age</span><span class="prop-val">82 years</span></div>
+            <div class="prop-row"><span class="prop-key">Savings vs. market</span><span class="prop-val hi">$3,825,000 MXN</span></div>
+          </div>
+          <a href="#contact" class="prop-cta">I'm interested in this property</a>
+        </div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Puebla" /><span class="prop-badge">48% off</span></div>
+        <div class="prop-body">
+          <p class="prop-zone">📍 Angelópolis, Puebla</p>
+          <h3 class="prop-name">4-bedroom house</h3>
+          <div class="prop-rows">
+            <div class="prop-row"><span class="prop-key">Market value</span><span class="prop-val">$5,200,000 MXN</span></div>
+            <div class="prop-row"><span class="prop-key">Bare ownership price</span><span class="prop-val hi">$2,704,000 MXN</span></div>
+            <div class="prop-row"><span class="prop-key">Usufructuary age</span><span class="prop-val">75 years</span></div>
+            <div class="prop-row"><span class="prop-key">Savings vs. market</span><span class="prop-val hi">$2,496,000 MXN</span></div>
+          </div>
+          <a href="#contact" class="prop-cta">I'm interested in this property</a>
+        </div>
+      </div>
+    </div>
+    <p class="props-note">* Properties shown are representative examples. Contact us for the actual available portfolio.</p>
+  </section>
+
+  <section class="process">
+    <div class="process-head">
+      <p class="eyebrow">How it works</p>
+      <h2 style="font-family:'Playfair Display',serif; font-size:2rem; color:white; margin-top:0.5rem;">From first contact to signed deed in 4 steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-title">Access the portfolio</div><div class="step-desc">After registration, we share available properties with their complete financial analysis.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">Select and review</div><div class="step-desc">Choose your property. We perform legal due diligence and formal valuation before any commitment.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">Notarized signing</div><div class="step-desc">The transaction is formalized before a notary public. You receive deeds certifying your bare ownership title.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">Consolidate in time</div><div class="step-desc">Upon the usufructuary's passing you obtain full ownership, or resell the bare ownership at any time.</div></div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-left">
+      <p class="eyebrow">Get access</p>
+      <h2>Let's talk about your investment strategy</h2>
+      <p>Fill out the form and an advisor will contact you to share available opportunities with their complete financial analysis.</p>
+      <div class="trust-items">
+        <div class="trust-item"><span class="trust-icon">📊</span><span>Detailed financial analysis for each property</span></div>
+        <div class="trust-item"><span class="trust-icon">⚖️</span><span>Legal due diligence included in every transaction</span></div>
+        <div class="trust-item"><span class="trust-icon">🏙️</span><span>Only high-demand zones in CDMX, Puebla and Edomex</span></div>
+        <div class="trust-item"><span class="trust-icon">🔒</span><span>Exclusive portfolio — not available on public portals</span></div>
+      </div>
+    </div>
+    <div>
+      <form onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group"><label>Full name</label><input type="text" placeholder="Your name" required /></div>
+          <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+1 555 000 0000" required /></div>
+        </div>
+        <div class="form-group"><label>Email address</label><input type="email" placeholder="email@example.com" required /></div>
+        <div class="form-group">
+          <label>Approximate available capital</label>
+          <select required>
+            <option value="">Select a range</option>
+            <option>Less than $55,000 USD</option>
+            <option>$55,000 – $165,000 USD</option>
+            <option>$165,000 – $385,000 USD</option>
+            <option>More than $385,000 USD</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Zones of interest</label>
+          <select>
+            <option>All zones</option>
+            <option>Polanco / Lomas / Pedregal</option>
+            <option>Condesa / Roma / Narvarte</option>
+            <option>Puebla (Centro / Angelópolis)</option>
+            <option>Estado de México (Interlomas / Satélite / Metepec)</option>
+            <option>Indifferent — looking for best return</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Access the portfolio →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Nuvi<span>tar</span></a>
+    <p>© 2025 Nuvitar. Information on this site is for reference only and does not constitute legal or financial advice.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="invertir.html">Español</a>
+      <a href="mailto:hola@nuvitar.com">hola@nuvitar.com</a>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      alert('Thank you! An advisor will contact you shortly to share available opportunities.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
