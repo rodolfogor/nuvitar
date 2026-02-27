@@ -515,7 +515,7 @@
 
   <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
     function calcular() {
       const valor = parseFloat(document.getElementById('prop-value').value);
       const edad = parseInt(document.getElementById('prop-age').value);
@@ -539,4 +539,61 @@
       const min = Math.round(valor * ageFactor * zoneFactor * 0.92 / 1000) * 1000;
       const max = Math.round(valor * ageFactor * zoneFactor * 1.08 / 1000) * 1000;
       const fmt = n => '$' + n.toLocaleString('es-MX') + ' MXN';
-      resultVal.textContent = `${fmt(min)} – $
+      resultVal.textContent = `${fmt(min)} – ${fmt(max)}`;
+      result.classList.add('visible');
+    }
+
+    async function submitForm(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const tipo = form.querySelector('input[name="tipo"]:checked')?.value || 'propietario';
+      const nombre = form.querySelectorAll('input[type="text"]')[0]?.value || '';
+      const telefono = form.querySelector('input[type="tel"]')?.value || '';
+      const colonia = form.querySelectorAll('input[type="text"]')[1]?.value || '';
+      const comentario = form.querySelector('textarea')?.value || '';
+
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer re_JEnPzvqn_6T3aMwRC9sQ86TJmGNscmwTS'
+          },
+          body: JSON.stringify({
+            from: 'Nuvitar <onboarding@resend.dev>',
+            to: ['rodolfogoned@gmail.com'],
+            subject: '🏠 Nueva consulta de propietario — Nuvitar',
+            html: `
+              <h2>Nueva consulta de propietario</h2>
+              <table style="border-collapse:collapse; width:100%; font-family:sans-serif;">
+                <tr><td style="padding:8px; border:1px solid #eee; color:#999;">Tipo</td><td style="padding:8px; border:1px solid #eee;">${tipo}</td></tr>
+                <tr><td style="padding:8px; border:1px solid #eee; color:#999;">Nombre</td><td style="padding:8px; border:1px solid #eee;">${nombre}</td></tr>
+                <tr><td style="padding:8px; border:1px solid #eee; color:#999;">Teléfono</td><td style="padding:8px; border:1px solid #eee;">${telefono}</td></tr>
+                <tr><td style="padding:8px; border:1px solid #eee; color:#999;">Colonia</td><td style="padding:8px; border:1px solid #eee;">${colonia}</td></tr>
+                <tr><td style="padding:8px; border:1px solid #eee; color:#999;">Comentario</td><td style="padding:8px; border:1px solid #eee;">${comentario}</td></tr>
+              </table>
+              <p style="margin-top:16px; color:#999; font-size:12px;">Enviado desde nuvitar.com/propietario</p>
+            `
+          })
+        });
+
+        if (res.ok) {
+          btn.textContent = '¡Mensaje enviado! Te contactamos pronto.';
+          btn.style.background = '#2D4A3E';
+          form.reset();
+        } else {
+          throw new Error('Error al enviar');
+        }
+      } catch (err) {
+        btn.textContent = 'Error al enviar. Escríbenos al WhatsApp.';
+        btn.style.background = '#8B3333';
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
