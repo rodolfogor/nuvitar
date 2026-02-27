@@ -499,14 +499,15 @@
     <p>© 2025 Nuvitar. La información en este sitio es orientativa y no constituye asesoría legal o fiscal.</p>
     <div class="footer-links">
       <a href="index.html">Inicio</a>
-      <a href="invertir.html">Soy inversionista</a>
-      <a href="mailto:hola@nuvitar.com">hola@nuvitar.com</a>
+      <a href="invertir.html">Quiero comprar</a>
+      <a href="blog.html">Blog</a>
+      <a href="/cdn-cgi/l/email-protection#a2cacdcec3e2ccd7d4cbd6c3d08cc1cdcf"><span class="__cf_email__" data-cfemail="741c1b1815341a01021d0015065a171b19">[email&#160;protected]</span></a>
     </div>
   </footer>
 
   <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function calcular() {
       const valor = parseFloat(document.getElementById('prop-value').value);
       const edad = parseInt(document.getElementById('prop-age').value);
@@ -530,14 +531,4 @@
       const min = Math.round(valor * ageFactor * zoneFactor * 0.92 / 1000) * 1000;
       const max = Math.round(valor * ageFactor * zoneFactor * 1.08 / 1000) * 1000;
       const fmt = n => '$' + n.toLocaleString('es-MX') + ' MXN';
-      resultVal.textContent = `${fmt(min)} – ${fmt(max)}`;
-      result.classList.add('visible');
-    }
-    function submitForm(e) {
-      e.preventDefault();
-      alert('¡Gracias! Te contactaremos en menos de 24 horas.');
-      e.target.reset();
-    }
-  </script>
-</body>
-</html>
+      resultVal.textContent = `${fmt(min)} – $

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo complementar tu pensión con tu patrimonio inmobiliario — Nuvitar</title>
+  <meta name="description" content="Si tu pensión no alcanza pero tienes una propiedad, existen opciones para obtener ingresos extra sin vender ni mudarte. Descúbrelas aquí." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EE; --warm-white: #FDFAF6; --dark: #1A1612; --brown: #3D2B1F;
+      --gold: #C9A96E; --gold-light: #E8D5B0; --green: #2D4A3E; --green-light: #4A7A68;
+      --text-muted: #7A6A5A; --border: #E0D5C8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 4rem; background: rgba(247,243,238,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; }
+    .nav-back:hover { color: var(--green); }
+
+    .article-hero { padding: 8rem 6rem 4rem; background: var(--warm-white); text-align: center; border-bottom: 1px solid var(--border); }
+    .article-category { display: inline-block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; background: var(--gold-light); padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
+    .article-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); color: var(--dark); line-height: 1.15; max-width: 750px; margin: 0 auto 1.5rem; }
+    .article-subtitle { font-size: 1.05rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .article-meta { font-size: 0.8rem; color: var(--text-muted); display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+
+    .article-container { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--dark); margin: 3rem 0 1rem; line-height: 1.3; }
+    .article-body h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--brown); margin: 2rem 0 0.75rem; }
+    .article-body p { font-size: 1rem; color: var(--brown); line-height: 1.85; margin-bottom: 1.5rem; }
+    .article-body strong { color: var(--dark); font-weight: 600; }
+
+    .highlight-box { background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0; padding: 1.5rem 2rem; margin: 2.5rem 0; }
+    .highlight-box p { margin-bottom: 0; color: var(--brown); font-size: 0.95rem; }
+
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin: 2.5rem 0; }
+    .stat-card { background: var(--green); border-radius: 4px; padding: 2rem; text-align: center; }
+    .stat-value { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); margin-bottom: 0.4rem; }
+    .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    .options-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 2.5rem 0; }
+    .option-card { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 1.75rem; display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; }
+    .option-num { width: 36px; height: 36px; border-radius: 50%; background: var(--cream); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--brown); flex-shrink: 0; }
+    .option-title { font-weight: 600; font-size: 0.95rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .option-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.6rem; }
+    .option-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 10px; }
+    .tag-green { background: rgba(45,74,62,0.1); color: var(--green); }
+    .tag-orange { background: rgba(201,169,110,0.2); color: var(--brown); }
+    .tag-red { background: rgba(180,60,60,0.1); color: #8B3333; }
+
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 0.88rem; }
+    .comparison-table th { background: var(--dark); color: white; padding: 1rem 1.25rem; text-align: left; font-weight: 500; font-size: 0.82rem; letter-spacing: 0.5px; }
+    .comparison-table th:first-child { border-radius: 3px 0 0 0; }
+    .comparison-table th:last-child { border-radius: 0 3px 0 0; }
+    .comparison-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border); color: var(--brown); vertical-align: top; line-height: 1.5; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:nth-child(even) td { background: var(--warm-white); }
+    .td-green { color: var(--green); font-weight: 600; }
+    .td-red { color: #8B3333; }
+
+    .persona-card { background: var(--green); border-radius: 4px; padding: 2.5rem; margin: 2.5rem 0; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
+    .persona-avatar { width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(201,169,110,0.4); display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+    .persona-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; margin-bottom: 0.25rem; }
+    .persona-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .persona-text { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.7; font-style: italic; }
+
+    .article-cta { background: var(--dark); border-radius: 4px; padding: 3rem; text-align: center; margin-top: 4rem; }
+    .article-cta h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; margin-bottom: 1rem; }
+    .article-cta p { color: rgba(255,255,255,0.55); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: 0.9rem 2rem; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; margin: 0.4rem; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline-w { background: transparent; color: rgba(255,255,255,0.7); padding: 0.9rem 2rem; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: all 0.2s; margin: 0.4rem; }
+    .btn-outline-w:hover { border-color: var(--gold); color: var(--gold); }
+
+    .related-section { background: var(--warm-white); border-top: 1px solid var(--border); padding: 4rem 6rem; }
+    .related-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 2rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .related-card { background: white; border: 1px solid var(--border); border-radius: 3px; padding: 1.75rem; text-decoration: none; transition: border-color 0.2s; }
+    .related-card:hover { border-color: var(--gold); }
+    .related-tag { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; display: block; }
+    .related-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); line-height: 1.4; margin-bottom: 0.5rem; }
+    .related-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    footer { background: var(--dark); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .article-hero { padding: 7rem 2rem 3rem; }
+      .article-container { padding: 3rem 1.5rem 4rem; }
+      .stat-row { grid-template-columns: 1fr; }
+      .persona-card { grid-template-columns: 1fr; text-align: center; }
+      .related-section { padding: 3rem 1.5rem; }
+      .related-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Nuvi<span>tar</span></a>
+    <a href="blog.html" class="nav-back">← Volver al blog</a>
+  </nav>
+
+  <header class="article-hero">
+    <span class="article-category">Finanzas personales</span>
+    <h1 class="article-title">Cómo complementar tu pensión con tu patrimonio inmobiliario</h1>
+    <p class="article-subtitle">Si tu pensión no alcanza pero tienes una propiedad, hay opciones reales para mejorar tus ingresos sin vender ni mudarte.</p>
+    <div class="article-meta">
+      <span>📅 2025</span>
+      <span>⏱ 7 min de lectura</span>
+      <span>✍️ Equipo Nuvitar</span>
+    </div>
+  </header>
+
+  <main class="article-container">
+    <div class="article-body">
+
+      <p>Existe un perfil muy común en México: personas mayores de 65 años que son dueñas de propiedades con un valor considerable, pero que cada mes tienen que ajustarse con una pensión del IMSS o del ISSSTE que apenas cubre lo básico. Son, en términos financieros, <strong>ricas en patrimonio pero pobres en liquidez</strong>.</p>
+
+      <p>Si te identificas con esta situación, este artículo es para ti. Aquí te explicamos las principales opciones que existen hoy en México para convertir tu patrimonio inmobiliario en ingresos reales, sin necesidad de vender tu casa ni irte de ella.</p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-value">$6,200</div>
+          <div class="stat-label">Pensión promedio mensual del IMSS en México (2024)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">+65%</div>
+          <div class="stat-label">De adultos mayores en CDMX son propietarios de su vivienda</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">$4M+</div>
+          <div class="stat-label">Valor promedio de departamentos en colonias como Narvarte o Del Valle</div>
+        </div>
+      </div>
+
+      <p>La brecha entre lo que vale tu propiedad y lo que percibes mensualmente es enorme. Y la buena noticia es que existen mecanismos legales para cerrar esa brecha.</p>
+
+      <h2>Tus opciones reales</h2>
+
+      <div class="options-list">
+
+        <div class="option-card">
+          <div class="option-num">1</div>
+          <div>
+            <div class="option-title">Venta de nuda propiedad con renta vitalicia</div>
+            <div class="option-desc">Vendes la titularidad de tu propiedad pero conservas el derecho de vivir en ella de por vida. A cambio recibes una renta mensual pactada hasta tu fallecimiento. Sigues en tu hogar y tienes ingresos fijos mensuales adicionales a tu pensión.</div>
+            <span class="option-tag tag-green">✓ Sin mudarte</span>
+          </div>
+        </div>
+
+        <div class="option-card">
+          <div class="option-num">2</div>
+          <div>
+            <div class="option-title">Venta de nuda propiedad con pago único</div>
+            <div class="option-desc">La misma figura que la anterior pero en lugar de renta mensual recibes un monto importante en una sola exhibición. Ideal si tienes una necesidad económica puntual grande, quieres invertir ese capital o simplemente prefieres tener el dinero disponible.</div>
+            <span class="option-tag tag-green">✓ Sin mudarte</span>
+          </div>
+        </div>
+
+        <div class="option-card">
+          <div class="option-num">3</div>
+          <div>
+            <div class="option-title">Rentar un cuarto o parte de tu propiedad</div>
+            <div class="option-desc">Si tu propiedad tiene espacio suficiente, rentarlo puede generar ingresos mensuales sin necesidad de moverte. La desventaja es que implica convivir con un extraño y asumir responsabilidades de arrendador, algo que no siempre es viable ni deseable.</div>
+            <span class="option-tag tag-orange">→ Requiere disposición</span>
+          </div>
+        </div>
+
+        <div class="option-card">
+          <div class="option-num">4</div>
+          <div>
+            <div class="option-title">Venta total y mudarse a algo más pequeño</div>
+            <div class="option-desc">Vender la propiedad, comprar o rentar algo más pequeño y vivir de la diferencia. Es una opción válida para quien está dispuesto a cambiar de hogar, pero implica el impacto emocional y logístico de una mudanza, además de gastos de transacción.</div>
+            <span class="option-tag tag-red">✗ Tienes que moverte</span>
+          </div>
+        </div>
+
+        <div class="option-card">
+          <div class="option-num">5</div>
+          <div>
+            <div class="option-title">Hipoteca inversa</div>
+            <div class="option-desc">Un banco te presta dinero usando tu propiedad como garantía y sin que tengas que pagar mientras vivas. Al fallecer, el banco cobra lo prestado con la venta del inmueble. En México esta figura existe pero tiene muy poca penetración y condiciones poco favorables comparadas con otros países.</div>
+            <span class="option-tag tag-orange">→ Disponibilidad limitada en México</span>
+          </div>
+        </div>
+
+      </div>
+
+      <h2>¿Cuál es la mejor opción para ti?</h2>
+
+      <p>Depende de tu situación específica, pero aquí hay una guía rápida:</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Si tu situación es...</th>
+            <th>La opción más adecuada es...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Necesitas ingresos mensuales fijos y quieres seguir en tu casa</td>
+            <td class="td-green">Nuda propiedad con renta vitalicia</td>
+          </tr>
+          <tr>
+            <td>Tienes una necesidad económica grande e inmediata</td>
+            <td class="td-green">Nuda propiedad con pago único</td>
+          </tr>
+          <tr>
+            <td>Tu propiedad tiene espacio extra y estás dispuesto a compartirla</td>
+            <td>Renta de cuarto o espacio</td>
+          </tr>
+          <tr>
+            <td>Estás abierto a mudarte y quieres simplificar tu vida</td>
+            <td>Venta total y downsize</td>
+          </tr>
+          <tr>
+            <td>Quieres mantener la propiedad para tus herederos</td>
+            <td class="td-red">Ninguna de las anteriores aplica bien</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Un caso real que ilustra el punto</h2>
+
+      <div class="persona-card">
+        <div class="persona-avatar">👩</div>
+        <div>
+          <div class="persona-name">Carmen, 78 años</div>
+          <div class="persona-sub">Propietaria en Narvarte, CDMX · Pensionada del IMSS</div>
+          <div class="persona-text">"Mi pensión era de poco más de 7,000 pesos al mes. Tenía un departamento que vale casi 5 millones pero no podía hacer nada con él sin irme. Con la nuda propiedad recibí más de 2 millones de pesos de una sola vez. Ahora vivo tranquila, sin preocupaciones por el dinero, y sigo en mi casa como siempre."</div>
+        </div>
+      </div>
+
+      <h2>¿Por qué la nuda propiedad es la opción más completa?</h2>
+
+      <p>De todas las opciones disponibles en México hoy, la venta de nuda propiedad es la que ofrece la combinación más favorable para la mayoría de los propietarios mayores porque resuelve el problema de raíz sin sacrificar el hogar, que es generalmente lo más importante para este perfil de persona.</p>
+
+      <p>La clave está en trabajar con asesores que conozcan bien la figura, que sean transparentes en los números y que acompañen todo el proceso legalmente. Eso es exactamente lo que hacemos en Nuvitar.</p>
+
+      <div class="article-cta">
+        <h3>¿Quieres saber cuánto podrías recibir?</h3>
+        <p>Cuéntanos tu situación y te decimos con honestidad si la nuda propiedad tiene sentido para ti. Sin compromiso y sin costos.</p>
+        <a href="propietario.html#contacto" class="btn-gold">Quiero una consulta gratuita</a>
+        <a href="propietario.html" class="btn-outline-w">Calcular mi estimación</a>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="related-section">
+    <h3 class="related-title">Artículos relacionados</h3>
+    <div class="related-grid">
+      <a href="articulo-que-es-nuda-propiedad.html" class="related-card">
+        <span class="related-tag">Guía básica</span>
+        <h4>¿Qué es la nuda propiedad en México?</h4>
+        <p>El concepto explicado desde cero en lenguaje sencillo.</p>
+      </a>
+      <a href="articulo-nuda-vs-venta-tradicional.html" class="related-card">
+        <span class="related-tag">Comparativa</span>
+        <h4>Nuda propiedad vs venta tradicional: ¿cuál conviene más?</h4>
+        <p>Las diferencias clave entre vender tu casa y vender solo la nuda propiedad.</p>
+      </a>
+      <a href="articulo-opciones-adultos-mayores.html" class="related-card">
+        <span class="related-tag">Para mayores</span>
+        <h4>Opciones para adultos mayores con patrimonio en CDMX</h4>
+        <p>Una guía completa de alternativas para monetizar tu patrimonio.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Nuvi<span>tar</span></a>
+    <p>© 2025 Nuvitar. La información en este sitio es orientativa y no constituye asesoría legal o fiscal.</p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
+
+</body>
+</html>

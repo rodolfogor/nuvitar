@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuda propiedad vs venta tradicional: ¿cuál conviene más? — Nuvitar</title>
+  <meta name="description" content="¿Vender tu casa o vender la nuda propiedad? Comparamos ambas opciones en precio, impacto emocional, implicaciones fiscales y situaciones donde cada una tiene sentido." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EE; --warm-white: #FDFAF6; --dark: #1A1612; --brown: #3D2B1F;
+      --gold: #C9A96E; --gold-light: #E8D5B0; --green: #2D4A3E; --green-light: #4A7A68;
+      --text-muted: #7A6A5A; --border: #E0D5C8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 4rem; background: rgba(247,243,238,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; }
+    .nav-back:hover { color: var(--green); }
+
+    .article-hero { padding: 8rem 6rem 4rem; background: var(--dark); text-align: center; position: relative; overflow: hidden; }
+    .article-hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(ellipse, rgba(201,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
+    .article-category { display: inline-block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; background: rgba(201,169,110,0.15); padding: 0.4rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; }
+    .article-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); color: white; line-height: 1.15; max-width: 750px; margin: 0 auto 1.5rem; }
+    .article-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .article-meta { font-size: 0.8rem; color: rgba(255,255,255,0.35); display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+
+    .article-container { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+    .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--dark); margin: 3rem 0 1rem; line-height: 1.3; }
+    .article-body p { font-size: 1rem; color: var(--brown); line-height: 1.85; margin-bottom: 1.5rem; }
+    .article-body strong { color: var(--dark); font-weight: 600; }
+
+    .highlight-box { background: var(--gold-light); border-left: 4px solid var(--gold); border-radius: 0 3px 3px 0; padding: 1.5rem 2rem; margin: 2.5rem 0; }
+    .highlight-box p { margin-bottom: 0; color: var(--brown); font-size: 0.95rem; }
+
+    .versus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 2.5rem 0; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+    .versus-col { padding: 0; }
+    .versus-header { padding: 1.25rem 1.75rem; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+    .versus-col.nuda .versus-header { background: var(--green); color: white; }
+    .versus-col.tradicional .versus-header { background: var(--dark); color: rgba(255,255,255,0.7); }
+    .versus-item { padding: 1rem 1.75rem; border-bottom: 1px solid var(--border); font-size: 0.88rem; line-height: 1.55; }
+    .versus-col.nuda .versus-item { color: var(--brown); background: white; }
+    .versus-col.tradicional .versus-item { color: var(--brown); background: var(--warm-white); }
+    .versus-item:last-child { border-bottom: none; }
+    .versus-label { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+
+    .big-table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 0.88rem; }
+    .big-table thead th { background: var(--dark); color: white; padding: 1rem 1.25rem; text-align: left; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.5px; }
+    .big-table thead th:first-child { border-radius: 3px 0 0 0; width: 30%; }
+    .big-table thead th:last-child { border-radius: 0 3px 0 0; }
+    .big-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border); color: var(--brown); vertical-align: top; line-height: 1.5; }
+    .big-table tr:last-child td { border-bottom: none; }
+    .big-table tr:nth-child(even) td { background: var(--warm-white); }
+    .td-green { color: var(--green); font-weight: 600; }
+    .td-red { color: #8B3333; }
+    .td-neutral { color: var(--text-muted); }
+
+    .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2.5rem 0; }
+    .decision-card { border-radius: 4px; padding: 2rem; }
+    .decision-card.verde { background: var(--green); }
+    .decision-card.oscuro { background: var(--dark); }
+    .decision-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .decision-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .decision-list li { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5; display: flex; gap: 0.5rem; }
+    .decision-list li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+    .article-cta { background: var(--green); border-radius: 4px; padding: 3rem; text-align: center; margin-top: 4rem; }
+    .article-cta h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; margin-bottom: 1rem; }
+    .article-cta p { color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: 0.9rem 2rem; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; margin: 0.4rem; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline-w { background: transparent; color: rgba(255,255,255,0.7); padding: 0.9rem 2rem; border-radius: 2px; border: 1px solid rgba(255,255,255,0.3); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: all 0.2s; margin: 0.4rem; }
+    .btn-outline-w:hover { border-color: var(--gold); color: var(--gold); }
+
+    .related-section { background: var(--warm-white); border-top: 1px solid var(--border); padding: 4rem 6rem; }
+    .related-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 2rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .related-card { background: white; border: 1px solid var(--border); border-radius: 3px; padding: 1.75rem; text-decoration: none; transition: border-color 0.2s; }
+    .related-card:hover { border-color: var(--gold); }
+    .related-tag { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; display: block; }
+    .related-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); line-height: 1.4; margin-bottom: 0.5rem; }
+    .related-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    footer { background: var(--dark); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .article-hero { padding: 7rem 2rem 3rem; }
+      .article-container { padding: 3rem 1.5rem 4rem; }
+      .versus-grid { grid-template-columns: 1fr; }
+      .decision-grid { grid-template-columns: 1fr; }
+      .related-section { padding: 3rem 1.5rem; }
+      .related-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Nuvi<span>tar</span></a>
+    <a href="blog.html" class="nav-back">← Volver al blog</a>
+  </nav>
+
+  <header class="article-hero">
+    <span class="article-category">Comparativa</span>
+    <h1 class="article-title">Nuda propiedad vs venta tradicional: ¿cuál conviene más?</h1>
+    <p class="article-subtitle">Dos formas muy distintas de monetizar tu propiedad. Te explicamos las diferencias clave para que tomes la mejor decisión.</p>
+    <div class="article-meta">
+      <span>📅 2025</span>
+      <span>⏱ 7 min de lectura</span>
+      <span>✍️ Equipo Nuvitar</span>
+    </div>
+  </header>
+
+  <main class="article-container">
+    <div class="article-body">
+
+      <p>Cuando una persona mayor necesita liquidez y tiene una propiedad, la primera idea que suele aparecer es venderla. Es lo más conocido, lo más simple de entender. Pero existe una alternativa que muy poca gente conoce en México y que en muchos casos resulta mucho más conveniente: <strong>la venta de nuda propiedad</strong>.</p>
+
+      <p>En este artículo comparamos ambas opciones de forma honesta para que puedas decidir cuál tiene más sentido para tu situación.</p>
+
+      <h2>La diferencia fundamental</h2>
+
+      <div class="versus-grid">
+        <div class="versus-col nuda">
+          <div class="versus-header">🏠 Nuda propiedad</div>
+          <div class="versus-item"><div class="versus-label">¿Qué vendes?</div>Solo el título legal (la propiedad)</div>
+          <div class="versus-item"><div class="versus-label">¿Sigues en tu casa?</div>Sí, de por vida</div>
+          <div class="versus-item"><div class="versus-label">¿Cuánto recibes?</div>40–60% del valor de mercado</div>
+          <div class="versus-item"><div class="versus-label">¿Cuándo recibes?</div>Al firmar ante notario</div>
+          <div class="versus-item"><div class="versus-label">¿Quién paga gastos?</div>Compartidos según el tipo</div>
+        </div>
+        <div class="versus-col tradicional">
+          <div class="versus-header">🔑 Venta tradicional</div>
+          <div class="versus-item"><div class="versus-label">¿Qué vendes?</div>Todo: propiedad y derecho de uso</div>
+          <div class="versus-item"><div class="versus-label">¿Sigues en tu casa?</div>No, tienes que desocupar</div>
+          <div class="versus-item"><div class="versus-label">¿Cuánto recibes?</div>100% del valor de mercado</div>
+          <div class="versus-item"><div class="versus-label">¿Cuándo recibes?</div>Al cerrar la venta</div>
+          <div class="versus-item"><div class="versus-label">¿Quién paga gastos?</div>El nuevo dueño se hace cargo</div>
+        </div>
+      </div>
+
+      <h2>Comparativa detallada punto por punto</h2>
+
+      <table class="big-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Nuda propiedad</th>
+            <th>Venta tradicional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dinero que recibes</strong></td>
+            <td class="td-neutral">Menor (40–60% del valor)</td>
+            <td class="td-green">Mayor (precio de mercado)</td>
+          </tr>
+          <tr>
+            <td><strong>Tu hogar</strong></td>
+            <td class="td-green">Sigues viviendo en él de por vida</td>
+            <td class="td-red">Tienes que mudarte</td>
+          </tr>
+          <tr>
+            <td><strong>Impacto emocional</strong></td>
+            <td class="td-green">Bajo — no hay ruptura con tu entorno</td>
+            <td class="td-red">Alto — implica dejar tu hogar y vecindario</td>
+          </tr>
+          <tr>
+            <td><strong>Gastos de la mudanza</strong></td>
+            <td class="td-green">Ninguno</td>
+            <td class="td-red">Costo adicional significativo</td>
+          </tr>
+          <tr>
+            <td><strong>Complejidad del proceso</strong></td>
+            <td class="td-neutral">Media — requiere notario especializado</td>
+            <td class="td-green">Estándar — proceso conocido</td>
+          </tr>
+          <tr>
+            <td><strong>Velocidad de cierre</strong></td>
+            <td class="td-neutral">6–10 semanas</td>
+            <td class="td-neutral">Variable, 1–6 meses</td>
+          </tr>
+          <tr>
+            <td><strong>Herencia para hijos</strong></td>
+            <td class="td-red">La propiedad ya no se hereda</td>
+            <td class="td-red">Tampoco, se vendió</td>
+          </tr>
+          <tr>
+            <td><strong>Implicaciones fiscales</strong></td>
+            <td class="td-neutral">ISR en la venta, tratamiento especial al consolidar</td>
+            <td class="td-neutral">ISR en la ganancia, posible exención si es casa habitación</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p><strong>Lo que más sorprende a la gente:</strong> recibir menos dinero con la nuda propiedad no siempre significa que sea peor opción. Si con el 50% del valor de tu propiedad puedes vivir tranquilo el resto de tu vida sin pagar renta, el resultado final puede ser mucho mejor que vender al 100% y destinar gran parte a pagar donde vivir.</p>
+      </div>
+
+      <h2>¿Cuándo conviene cada opción?</h2>
+
+      <div class="decision-grid">
+        <div class="decision-card verde">
+          <div class="decision-title">La nuda propiedad conviene más cuando...</div>
+          <ul class="decision-list">
+            <li>No quieres ni puedes mudarte de tu hogar</li>
+            <li>Tienes más de 70 años y el descuento es menor</li>
+            <li>No tienes herederos directos o tus hijos están de acuerdo</li>
+            <li>Necesitas complementar tu pensión de forma estable</li>
+            <li>Tu propiedad está en una zona con alta demanda de inversión</li>
+          </ul>
+        </div>
+        <div class="decision-card oscuro">
+          <div class="decision-title">La venta tradicional conviene más cuando...</div>
+          <ul class="decision-list">
+            <li>Estás dispuesto a mudarte a algo más pequeño o económico</li>
+            <li>Necesitas el máximo de liquidez posible en este momento</li>
+            <li>Tienes alternativa de vivienda clara y accesible</li>
+            <li>La propiedad tiene problemas legales o estructurales</li>
+            <li>Quieres cerrar el capítulo y simplificar tu vida por completo</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>El factor que casi nadie calcula: el costo real de mudarse</h2>
+
+      <p>Cuando las personas piensan en vender su casa al precio completo, suelen olvidar calcular cuánto les va a costar vivir después de esa venta. Si una persona de 75 años vende su departamento en $5,000,000 MXN pero necesita rentar algo en una zona similar, estará pagando entre $15,000 y $25,000 MXN mensuales de renta durante el resto de su vida.</p>
+
+      <p>En 10 años eso representa entre $1,800,000 y $3,000,000 MXN solo en renta, sin contar gastos de mudanza, adaptación y el impacto emocional de dejar un hogar de décadas. Visto así, recibir $2,500,000 MXN con la nuda propiedad y seguir sin pagar renta puede ser financieramente superior a largo plazo.</p>
+
+      <div class="article-cta">
+        <h3>¿No sabes cuál opción es mejor para tu caso?</h3>
+        <p>Platicamos contigo, analizamos tu situación específica y te damos nuestra opinión honesta, aunque la conclusión sea que la nuda propiedad no es para ti.</p>
+        <a href="propietario.html#contacto" class="btn-gold">Quiero una consulta gratuita</a>
+        <a href="articulo-complementar-pension.html" class="btn-outline-w">Ver más opciones</a>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="related-section">
+    <h3 class="related-title">Artículos relacionados</h3>
+    <div class="related-grid">
+      <a href="articulo-que-es-nuda-propiedad.html" class="related-card">
+        <span class="related-tag">Guía básica</span>
+        <h4>¿Qué es la nuda propiedad en México?</h4>
+        <p>El concepto explicado desde cero en lenguaje sencillo.</p>
+      </a>
+      <a href="articulo-complementar-pension.html" class="related-card">
+        <span class="related-tag">Finanzas personales</span>
+        <h4>Cómo complementar tu pensión con tu patrimonio</h4>
+        <p>Todas las opciones disponibles para adultos mayores con propiedad.</p>
+      </a>
+      <a href="articulo-opciones-adultos-mayores.html" class="related-card">
+        <span class="related-tag">Para mayores</span>
+        <h4>Opciones para adultos mayores con patrimonio en CDMX</h4>
+        <p>Guía completa para monetizar tu patrimonio en la Ciudad de México.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Nuvi<span>tar</span></a>
+    <p>© 2025 Nuvitar. La información en este sitio es orientativa y no constituye asesoría legal o fiscal.</p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
+
+</body>
+</html>

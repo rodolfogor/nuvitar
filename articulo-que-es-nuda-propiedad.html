@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Qué es la nuda propiedad en México? — Nuvitar</title>
+  <meta name="description" content="Descubre qué es la nuda propiedad en México, cómo funciona el usufructo vitalicio y por qué cada vez más propietarios la usan para obtener liquidez sin dejar su hogar." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF6;
+      --dark: #1A1612;
+      --brown: #3D2B1F;
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --green: #2D4A3E;
+      --green-light: #4A7A68;
+      --text-muted: #7A6A5A;
+      --border: #E0D5C8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(247,243,238,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
+    .logo span { color: var(--gold); }
+    .nav-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; }
+    .nav-back:hover { color: var(--green); }
+
+    /* HERO ARTICLE */
+    .article-hero {
+      padding: 8rem 6rem 4rem;
+      background: var(--green);
+      text-align: center;
+    }
+    .article-category {
+      display: inline-block;
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 600;
+      background: rgba(201,169,110,0.15);
+      padding: 0.4rem 1rem; border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: white; line-height: 1.15;
+      max-width: 750px; margin: 0 auto 1.5rem;
+    }
+    .article-subtitle {
+      font-size: 1.05rem; color: rgba(255,255,255,0.65);
+      max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .article-meta {
+      font-size: 0.8rem; color: rgba(255,255,255,0.4);
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+    }
+
+    /* ARTICLE BODY */
+    .article-container {
+      max-width: 780px; margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem; color: var(--dark);
+      margin: 3rem 0 1rem; line-height: 1.3;
+    }
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--brown);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body p {
+      font-size: 1rem; color: var(--brown);
+      line-height: 1.85; margin-bottom: 1.5rem;
+    }
+    .article-body strong { color: var(--dark); font-weight: 600; }
+
+    .highlight-box {
+      background: var(--gold-light);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 3px 3px 0;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+    }
+    .highlight-box p { margin-bottom: 0; color: var(--brown); font-size: 0.95rem; }
+    .highlight-box strong { color: var(--dark); }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+    }
+    .info-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--dark);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-row {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-key { color: var(--text-muted); flex-shrink: 0; min-width: 160px; }
+    .info-val { color: var(--dark); font-weight: 500; text-align: right; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    .col-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+    }
+    .col-card-title {
+      font-weight: 700; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .col-card.verde .col-card-title { color: var(--green); }
+    .col-card.dorado .col-card-title { color: var(--brown); }
+    .col-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .col-card ul li { font-size: 0.88rem; color: var(--brown); line-height: 1.5; display: flex; gap: 0.5rem; }
+    .col-card ul li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .col-card.dorado ul li::before { content: '→'; color: var(--gold); }
+
+    .example-box {
+      background: var(--green);
+      border-radius: 4px;
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      color: white;
+    }
+    .example-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--gold-light);
+      margin-bottom: 1.25rem;
+    }
+    .example-box p { color: rgba(255,255,255,0.75); margin-bottom: 1rem; font-size: 0.92rem; }
+    .example-box p:last-child { margin-bottom: 0; }
+    .example-box strong { color: white; }
+
+    /* CTA */
+    .article-cta {
+      background: var(--dark);
+      border-radius: 4px;
+      padding: 3rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    .article-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; color: white; margin-bottom: 1rem;
+    }
+    .article-cta p { color: rgba(255,255,255,0.55); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.7; }
+    .btn-gold {
+      background: var(--gold); color: var(--dark);
+      padding: 0.9rem 2rem; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; display: inline-block;
+      transition: background 0.2s; margin: 0.4rem;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline-w {
+      background: transparent; color: rgba(255,255,255,0.7);
+      padding: 0.9rem 2rem; border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      text-decoration: none; display: inline-block;
+      transition: border-color 0.2s, color 0.2s; margin: 0.4rem;
+    }
+    .btn-outline-w:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* RELATED */
+    .related-section {
+      background: var(--warm-white);
+      border-top: 1px solid var(--border);
+      padding: 4rem 6rem;
+    }
+    .related-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--dark);
+      margin-bottom: 2rem;
+    }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .related-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 3px; padding: 1.75rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .related-card:hover { border-color: var(--gold); }
+    .related-tag { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; display: block; }
+    .related-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); line-height: 1.4; margin-bottom: 0.5rem; }
+    .related-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    footer { background: var(--dark); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+    .wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .article-hero { padding: 7rem 2rem 3rem; }
+      .article-container { padding: 3rem 1.5rem 4rem; }
+      .two-col { grid-template-columns: 1fr; }
+      .related-section { padding: 3rem 1.5rem; }
+      .related-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Nuvi<span>tar</span></a>
+    <a href="blog.html" class="nav-back">← Volver al blog</a>
+  </nav>
+
+  <header class="article-hero">
+    <span class="article-category">Guía básica</span>
+    <h1 class="article-title">¿Qué es la nuda propiedad en México y cómo funciona?</h1>
+    <p class="article-subtitle">Una explicación sencilla de una figura legal que puede cambiar la forma en que ves tu patrimonio.</p>
+    <div class="article-meta">
+      <span>📅 2025</span>
+      <span>⏱ 6 min de lectura</span>
+      <span>✍️ Equipo Nuvitar</span>
+    </div>
+  </header>
+
+  <main class="article-container">
+    <div class="article-body">
+
+      <p>Si alguna vez te has preguntado si es posible obtener dinero de tu propiedad sin tener que venderla ni irte de ella, la respuesta existe y tiene nombre: <strong>nuda propiedad</strong>. Es una figura legal que existe en México, que cada vez más personas usan para resolver un problema muy concreto: tener mucho patrimonio pero poca liquidez.</p>
+
+      <p>En este artículo te explicamos qué es, cómo funciona, quiénes pueden usarla y qué debes considerar antes de tomar una decisión.</p>
+
+      <h2>El concepto en palabras simples</h2>
+
+      <p>Imagina que la propiedad de tu casa se puede dividir en dos partes separadas. Por un lado está el <strong>derecho de vivir en ella y usarla</strong>, que se llama usufructo. Por otro lado está el <strong>título legal de propietario</strong>, que se llama nuda propiedad.</p>
+
+      <p>Normalmente estas dos partes van juntas en la misma persona. Pero la ley en México permite separarlas. Eso es exactamente lo que ocurre en una operación de nuda propiedad: tú vendes el título de propietario a otra persona pero te quedas con el derecho de vivir en tu casa de por vida.</p>
+
+      <div class="highlight-box">
+        <p><strong>En resumen:</strong> vendes la propiedad, recibes el dinero, pero sigues viviendo en tu casa exactamente igual que antes. El comprador obtiene el título legal a un precio reducido, pero no puede usar ni rentar la propiedad hasta que tú fallezcas o decidas renunciar al usufructo.</p>
+      </div>
+
+      <h2>¿Quién es quién en esta operación?</h2>
+
+      <div class="info-card">
+        <div class="info-card-title">Los dos roles en una operación de nuda propiedad</div>
+        <div class="info-row">
+          <span class="info-key">Usufructuario</span>
+          <span class="info-val">El vendedor. Sigue viviendo en la casa de por vida. Recibe el dinero de la venta.</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Nudo propietario</span>
+          <span class="info-val">El comprador. Obtiene el título legal de la propiedad a precio reducido. No puede usar el inmueble hasta que el usufructuario fallezca.</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Notario público</span>
+          <span class="info-val">Formaliza la operación en escritura pública e inscribe los derechos en el Registro Público de la Propiedad.</span>
+        </div>
+      </div>
+
+      <h2>¿Por qué alguien querría comprar así?</h2>
+
+      <p>Es la pregunta lógica. ¿Por qué un comprador pagaría por una propiedad que no puede usar de inmediato? La respuesta es sencilla: <strong>porque la adquiere a un precio muy por debajo del mercado</strong>, típicamente entre un 40% y un 60% menos que su valor real.</p>
+
+      <p>Para un inversionista con visión de largo plazo, comprar hoy una propiedad en Narvarte o Polanco a la mitad de su valor es una operación muy atractiva, aunque implique esperar. Además, el comprador puede revender su nuda propiedad a un tercero en cualquier momento si necesita liquidez antes del plazo.</p>
+
+      <h2>¿Cuánto dinero recibes como vendedor?</h2>
+
+      <p>El monto que recibes depende principalmente de dos factores: el valor de mercado de tu propiedad y tu edad. La lógica es simple: <strong>a mayor edad, mayor es el monto que recibes</strong>, porque la esperanza de vida es menor y el comprador espera menos tiempo para obtener la propiedad plena.</p>
+
+      <div class="example-box">
+        <div class="example-title">Ejemplo orientativo</div>
+        <p>Supongamos que tienes <strong>76 años</strong> y una propiedad en Narvarte valuada en <strong>$4,800,000 MXN</strong>.</p>
+        <p>Aplicando los factores de edad y zona, podrías recibir aproximadamente entre <strong>$2,100,000 y $2,500,000 MXN</strong> en una sola exhibición, o bien acordar una renta vitalicia mensual equivalente.</p>
+        <p>Mientras tanto, sigues viviendo en tu departamento exactamente igual que hoy.</p>
+      </div>
+
+      <h2>¿Qué ventajas tiene para cada parte?</h2>
+
+      <div class="two-col">
+        <div class="col-card verde">
+          <div class="col-card-title">Para el vendedor</div>
+          <ul>
+            <li>Obtienes liquidez inmediata sin mudarte</li>
+            <li>Eliges entre pago único o renta vitalicia mensual</li>
+            <li>Tu derecho a vivir en casa queda protegido legalmente de por vida</li>
+            <li>No tienes que pagar gastos extraordinarios del inmueble</li>
+            <li>Ideal si no tienes herederos directos o tus hijos están de acuerdo</li>
+          </ul>
+        </div>
+        <div class="col-card dorado">
+          <div class="col-card-title">Para el comprador</div>
+          <ul>
+            <li>Adquieres propiedad en zona prime a 40–60% bajo valor de mercado</li>
+            <li>No necesitas hipoteca ni financiamiento bancario</li>
+            <li>Puedes revender tu posición en cualquier momento</li>
+            <li>Operación con plena seguridad jurídica ante notario</li>
+            <li>Acceso a propiedades que no están en portales tradicionales</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>¿Es legal en México?</h2>
+
+      <p>Sí, completamente. La figura del usufructo y la nuda propiedad está reconocida en el <strong>Código Civil Federal</strong> y en los códigos civiles de cada estado, incluido el de la Ciudad de México. La operación se formaliza en escritura pública ante notario público y se inscribe en el Registro Público de la Propiedad, lo que protege legalmente tanto al vendedor como al comprador.</p>
+
+      <div class="highlight-box">
+        <p><strong>Importante:</strong> desde la reforma fiscal de 2022, cuando se consolida la propiedad plena (al fallecimiento del usufructuario), existe un tratamiento específico de ISR para el comprador. Por eso es fundamental trabajar con asesores que conozcan las implicaciones fiscales de cada operación. En Nuvitar te explicamos esto con detalle antes de cualquier decisión.</p>
+      </div>
+
+      <h2>¿Para quién es esta opción?</h2>
+
+      <p>La nuda propiedad funciona especialmente bien para propietarios mayores de 65 años que tienen una propiedad de valor pero necesitan mejorar su liquidez mensual, que no quieren o no pueden mudarse, y que no tienen herederos directos o cuyos hijos están de acuerdo en que aprovechen su patrimonio en vida.</p>
+
+      <p>No es la solución correcta para todos. Por eso en Nuvitar ofrecemos siempre una primera consulta gratuita donde analizamos tu situación específica y te decimos con honestidad si esta opción tiene sentido para ti.</p>
+
+      <div class="article-cta">
+        <h3>¿Quieres saber cuánto podrías recibir por tu propiedad?</h3>
+        <p>La primera consulta es gratuita, confidencial y sin ningún compromiso. Solo una plática para entender tu situación.</p>
+        <a href="propietario.html#contacto" class="btn-gold">Quiero más información</a>
+        <a href="propietario.html" class="btn-outline-w">Calcular mi estimación</a>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="related-section">
+    <h3 class="related-title">Artículos relacionados</h3>
+    <div class="related-grid">
+      <a href="articulo-venta-nuda-propiedad.html" class="related-card">
+        <span class="related-tag">Guía legal</span>
+        <h4>Venta de nuda propiedad con reserva de usufructo: lo que necesitas saber</h4>
+        <p>Derechos, obligaciones y todo el proceso explicado en lenguaje simple.</p>
+      </a>
+      <a href="propietario.html" class="related-card">
+        <span class="related-tag">Para propietarios</span>
+        <h4>¿Cuánto puedo recibir por mi propiedad?</h4>
+        <p>Usa nuestra calculadora orientativa y obtén una estimación en segundos.</p>
+      </a>
+      <a href="invertir.html" class="related-card">
+        <span class="related-tag">Para inversionistas</span>
+        <h4>Por qué la nuda propiedad es una inversión inteligente</h4>
+        <p>Activos prime a precio de descuento. Sin hipoteca. Sin portales tradicionales.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Nuvi<span>tar</span></a>
+    <p>© 2025 Nuvitar. La información en este sitio es orientativa y no constituye asesoría legal o fiscal.</p>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/525586611238" target="_blank">💬</a>
+
+</body>
+</html>
