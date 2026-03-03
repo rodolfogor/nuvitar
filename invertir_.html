@@ -37,67 +37,24 @@
 
     /* HERO */
     .hero {
-      padding: 9rem 6rem 6rem;
+      padding: 10rem 6rem 6rem;
       background: var(--dark);
       position: relative;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      min-height: 90vh;
+      text-align: center;
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.06) 0%, transparent 60%);
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-left { position: relative; z-index: 1; }
     .hero-eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 4rem); color: white; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 5rem); color: white; line-height: 1.1; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
     .hero-title em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 2.5rem; max-width: 480px; }
-
-    /* PROPERTY CARD HERO */
-    .hero-card {
-      position: relative; z-index: 1;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
-    }
-    .hero-card-img {
-      width: 100%; height: 260px;
-      object-fit: cover; display: block;
-    }
-    .hero-card-badge {
-      position: absolute; top: 1rem; left: 1rem;
-      background: var(--gold); color: var(--dark);
-      font-size: 0.72rem; font-weight: 700;
-      padding: 0.35rem 0.85rem; border-radius: 20px;
-      letter-spacing: 1px; text-transform: uppercase;
-    }
-    .hero-card-body { padding: 1.5rem; }
-    .hero-card-location { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
-    .hero-card-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dark); margin-bottom: 1.25rem; }
-    .hero-card-rows { display: flex; flex-direction: column; gap: 0; }
-    .hero-card-row { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
-    .hero-card-row:last-child { border-bottom: none; }
-    .hero-card-key { color: var(--text-muted); }
-    .hero-card-val { font-weight: 600; color: var(--dark); }
-    .hero-card-val.gold { color: var(--green); font-size: 1rem; }
-    .hero-card-cta {
-      display: block; width: 100%;
-      background: var(--dark); color: white;
-      text-align: center; padding: 0.9rem;
-      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
-      text-decoration: none; margin-top: 1.25rem; border-radius: 4px;
-      transition: background 0.2s;
-    }
-    .hero-card-cta:hover { background: var(--green); }
-    .hero-card-disclaimer { font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.6rem; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 580px; margin: 0 auto 3rem; }
     .btn-gold {
       background: var(--gold); color: var(--dark);
       padding: 1rem 2.5rem; border-radius: 2px;
@@ -248,8 +205,7 @@
 
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .hero { padding: 8rem 2rem 5rem; grid-template-columns: 1fr; min-height: auto; }
-      .hero-card { margin-top: 2rem; }
+      .hero { padding: 8rem 2rem 5rem; }
       .metrics-section { padding: 4rem 2rem; }
       .metrics-grid { grid-template-columns: 1fr 1fr; }
       .why-section { padding: 4rem 2rem; }
@@ -291,42 +247,10 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Para inversionistas</p>
-      <h1 class="hero-title">Activos prime.<br/><em>Precio de otra época.</em></h1>
-      <p class="hero-sub">Propiedades en zonas de alta demanda en CDMX, Puebla y Estado de México a 40–60% de su valor de mercado. Sin hipoteca. Sin portales tradicionales.</p>
-      <a href="#contacto" class="btn-gold">Quiero acceder a la cartera →</a>
-    </div>
-    <div class="hero-card">
-      <div style="position:relative;">
-        <img src="img/prop-hero.jpg" alt="Propiedad en nuda propiedad CDMX" class="hero-card-img" />
-        <span class="hero-card-badge">52% descuento</span>
-      </div>
-      <div class="hero-card-body">
-        <p class="hero-card-location">📍 Narvarte, CDMX</p>
-        <h3 class="hero-card-name">Departamento 3 recámaras · 120 m²</h3>
-        <div class="hero-card-rows">
-          <div class="hero-card-row">
-            <span class="hero-card-key">Valor de mercado</span>
-            <span class="hero-card-val">$4,800,000 MXN</span>
-          </div>
-          <div class="hero-card-row">
-            <span class="hero-card-key">Precio nuda propiedad</span>
-            <span class="hero-card-val gold">$2,300,000 MXN</span>
-          </div>
-          <div class="hero-card-row">
-            <span class="hero-card-key">Edad usufructuaria</span>
-            <span class="hero-card-val">78 años</span>
-          </div>
-          <div class="hero-card-row">
-            <span class="hero-card-key">Ahorro vs mercado</span>
-            <span class="hero-card-val gold">$2,500,000 MXN</span>
-          </div>
-        </div>
-        <a href="#contacto" class="hero-card-cta">Me interesa esta propiedad →</a>
-        <p class="hero-card-disclaimer">* Ejemplo representativo. Datos orientativos.</p>
-      </div>
-    </div>
+    <p class="hero-eyebrow">Para inversionistas</p>
+    <h1 class="hero-title">Activos prime.<br/><em>Precio de otra época.</em></h1>
+    <p class="hero-sub">Adquiere propiedades en zonas de alta demanda en CDMX, Puebla y Estado de México a 40–60% de su valor de mercado. Sin hipoteca. Sin portales tradicionales.</p>
+    <a href="#contacto" class="btn-gold">Quiero acceder a la cartera →</a>
   </section>
 
   <!-- METRICS -->
